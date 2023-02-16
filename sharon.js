@@ -15,8 +15,8 @@ async function generateResponse(text) {
   const response = await openai.createCompletion({
     model: "text-davinci-003",
     prompt: text,
-    temperature: 0.3,
     max_tokens: 2000,
+    temperature: 0.3,
     top_p: 1.0,
     frequency_penalty: 0.0,
     presence_penalty: 0.0,
@@ -81,6 +81,8 @@ async function connectToWhatsApp() {
           //Jika ada yang mengirim pesan mengandung kata 'siapa'
           if (incomingMessages.includes("siapa") && incomingMessages.includes("kamu")) {
             await sock.sendMessage(senderNumber, { text: "Saya Mifta Bot!" }, { quoted: messages[0] }, 2000);
+          } else if (incomingMessages.includes("p") && incomingMessages.includes("ping")) {
+            await sock.sendMessage(senderNumber, { text: "Ada yang bisa saya bantu?" }, { quoted: messages[0] }, 2000);
           } else {
             async function main() {
               const result = await generateResponse(incomingMessages);
@@ -95,7 +97,9 @@ async function connectToWhatsApp() {
         if (isMessageFromGroup && isMessageMentionBot) {
           //Jika ada yang mengirim pesan mengandung kata 'siapa'
           if (incomingMessages.includes("siapa") && incomingMessages.includes("kamu")) {
-            await sock.sendMessage(senderNumber, { text: "Saya Sharon!" }, { quoted: messages[0] }, 2000);
+            await sock.sendMessage(senderNumber, { text: "Saya Mifta Bot" }, { quoted: messages[0] }, 2000);
+          } else if (incomingMessages.includes("p") && incomingMessages.includes("ping")) {
+            await sock.sendMessage(senderNumber, { text: "Ada yang bisa saya bantu?" }, { quoted: messages[0] }, 2000);
           } else {
             async function main() {
               const result = await generateResponse(incomingMessages);
