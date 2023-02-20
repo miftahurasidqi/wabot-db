@@ -2,10 +2,10 @@
   "name": "wabot-chatgpt",
   "version": "1.0.0",
   "description": "",
-  "main": "sharon.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node sharon.js"
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "",
