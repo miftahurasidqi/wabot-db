@@ -6,7 +6,8 @@ const { state, saveState } = useSingleFileAuthState("./login.json");
 //Bagian Koding ChatGPT
 const { Configuration, OpenAIApi } = require("openai");
 const configuration = new Configuration({
-  apiKey: "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",
+  apiKey: "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",
+  // apiKey: "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",
 });
 const openai = new OpenAIApi(configuration);
 
@@ -79,18 +80,18 @@ async function connectToWhatsApp() {
         //Kalo misalkan nanya langsung ke Bot / JAPRI
         if (!isMessageFromGroup) {
           //Jika ada yang mengirim pesan mengandung kata 'siapa'
-          if (incomingMessages.includes("siapa") && incomingMessages.includes("kamu")) {
-            await sock.sendMessage(senderNumber, { text: "Saya Mifta Bot!" }, { quoted: messages[0] }, 2000);
-          } else if (incomingMessages.includes("p") && incomingMessages.includes("ping")) {
-            await sock.sendMessage(senderNumber, { text: "Ada yang bisa saya bantu?" }, { quoted: messages[0] }, 2000);
-          } else {
-            async function main() {
-              const result = await generateResponse(incomingMessages);
-              console.log(result);
-              await sock.sendMessage(senderNumber, { text: result + "\n\n" }, { quoted: messages[0] }, 2000);
-            }
-            main();
+          // if (incomingMessages.includes("siapa") && incomingMessages.includes("kamu")) {
+          // await sock.sendMessage(senderNumber, { text: "Saya Mifta Bot!" }, { quoted: messages[0] }, 2000);
+          // } else if (incomingMessages.includes("p") || incomingMessages.includes("ping")) {
+          // await sock.sendMessage(senderNumber, { text: "Ada yang bisa saya bantu?" }, { quoted: messages[0] }, 2000);
+          // } else {
+          async function main() {
+            const result = await generateResponse(incomingMessages);
+            console.log(result);
+            await sock.sendMessage(senderNumber, { text: result + "\n\n" }, { quoted: messages[0] }, 2000);
           }
+          main();
+          // }
         }
 
         //Kalo misalkan nanya via Group
