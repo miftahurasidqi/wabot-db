@@ -17,7 +17,7 @@ dbConnection.connect((err) => {
   }
 });
 
-app.get("/api/messages", (req, res) => {
+app.get("/", (req, res) => {
   res.json({
     data: "Hello World",
   });
